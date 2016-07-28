@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<properties resource="db.properties"></properties>
+	<settings>
+		<!--指定mybatis使用日志组件 -->
+		<setting name="logImpl" value="LOG4J2" />
+		<!--开启全局的二级缓存 -->
+		<setting name="cacheEnabled" value="false" />
+		<!--开启延时加载，如果有关联关系，则默认不会获取数据 
+		延迟加载的全局开关。当开启时，所有关联对象都会延迟加载。 
+		特定关联关系中可通过设置fetchType属性来覆盖该项的开关状态。
+		在association中指定fetchType="eager(立即)" 或者 lazy(延迟)
+		默认：false
+		-->
+		<setting name="lazyLoadingEnabled" value="true" />
+		<!--true时，对任意延迟属性的调用会使带有延迟加载属性的对象完整加载；
+		  false，每种属性将会按需加载。
+		  默认为：true-->
+		<setting name="aggressiveLazyLoading" value="false" /> 
+	</settings>
+	<typeAliases>
+		<package name="com.zhangguo.ssmall.entities" />
+	</typeAliases>
+	<!-- 
+	<environments default="development">
+		<environment id="development">
+			<transactionManager type="JDBC"></transactionManager>
+			<dataSource type="POOLED">
+				<property name="driver" value="${mysql.driver}" />
+				<property name="url" value="${mysql.url}" />
+				<property name="username" value="${mysql.uid}" />
+				<property name="password" value="${mysql.password}" />
+			</dataSource>
+		</environment>
+	</environments>
+	<mappers> 
+		<mapper resource="com/zhangguo/ssmall/mapper/GoodsMapper.xml" /> 
+	</mappers>-->
+</configuration>

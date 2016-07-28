@@ -1,0 +1,109 @@
+@CHARSET "UTF-8";
+
+* {
+	margin: 0;
+	padding: 0;
+	font-family: microsoft yahei;
+	font-size: 14px;
+}
+
+body {
+	padding-top: 20px;
+}
+
+.main {
+	width: 90%;
+	margin: 0 auto;
+	border: 1px solid #777;
+	padding: 20px;
+	border-radius: 5px;
+}
+
+.main .title {
+	font-size: 20px;
+	font-weight: normal;
+	border-bottom: 1px solid #ccc;
+	margin-bottom: 15px;
+	padding-bottom: 5px;
+	color: #006ac1;
+}
+
+.main .title span {
+	display: inline-block;
+	font-size: 20px;
+	color: #fff;
+	padding: 0 8px;
+	background: orangered;
+	border-radius: 5px;
+}
+
+a {
+	color: #006ac1;
+	text-decoration: none;
+}
+
+a:hover {
+	color: orangered;
+}
+
+.tab td, .tab, .tab th {
+	border: 1px solid #777;
+	border-collapse: collapse;
+}
+
+.tab td, .tab th {
+	line-height: 26px;
+	height: 26px;
+	padding-left: 5px;
+}
+
+.abtn {
+	display: inline-block;
+	height: 18px;
+	line-height: 18px;
+	background: #006ac1;
+	color: #fff;
+	padding: 0 5px;
+	border-radius: 5px;
+}
+
+.btn {
+	height: 18px;
+	line-height: 18px;
+	background: #006ac1;
+	color: #fff;
+	padding: 0 8px;
+	border: 0;
+	border-radius: 5px;
+}
+
+.abtn:hover, .btn:hover {
+	background: orangered;
+	color: #fff;
+}
+
+p {
+	padding: 5px 0;
+}
+
+fieldset {
+	border: 1px solid #ccc;
+	padding: 5px 10px;
+}
+
+fieldset legend {
+	margin-left: 10px;
+	font-size: 16px;
+}
+
+a.out,input.out {
+	height: 23px;
+	line-height: 23px;
+}
+form{
+	margin:10px 0;
+}
+.error
+{
+	color:red
+}

@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://java.sun.com/xml/ns/javaee"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
+	id="WebApp_ID" version="3.0">
+
+	<welcome-file-list>
+		<welcome-file>index.jsp</welcome-file>
+	</welcome-file-list>
+
+	<listener>
+		<description>Spring容器加载监听器</description>
+		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+	</listener>
+	<context-param>
+		<description>设置Spring加载时的配置文件位置，默认位置在WEB-INF/lib目录下</description>
+		<param-name>contextConfigLocation</param-name>
+		<param-value>classpath*:applicationContext.xml</param-value>
+	</context-param>
+
+	<!--Spring MVC 前置Servlet，中心控制器 -->
+	<servlet>
+		<servlet-name>springmvc</servlet-name>
+		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+		<init-param>
+			<param-name>contextConfigLocation</param-name>
+			<!--Spring MVC配置文件路径 -->
+			<param-value>classpath*:springmvc-servlet.xml</param-value>
+		</init-param>
+		<!-- 启动动优先级，越小越早加载 -->
+		<load-on-startup>1</load-on-startup>
+		<!--Servlet3.0以上文件上传配置 -->
+		<multipart-config>
+			<!--上传文件的最大限制5MB -->
+			<max-file-size>5242880</max-file-size>
+			<!--请求的最大限制20MB -->
+			<max-request-size>20971520</max-request-size>
+			<!--当文件的大小超过临界值时将写入磁盘 -->
+			<file-size-threshold>0</file-size-threshold>
+		</multipart-config>
+	</servlet>
+	<!-- Servlet访问的路径映射，所有的访问都必须经过调度用的前置控制品 -->
+	<servlet-mapping>
+		<servlet-name>springmvc</servlet-name>
+		<url-pattern>/</url-pattern>
+	</servlet-mapping>
+	
+	<!--编码过滤器 -->
+	<filter>
+		<filter-name>characterEncodingFilter</filter-name>
+		<filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
+		<init-param>
+			<param-name>encoding</param-name>
+			<param-value>UTF-8</param-value>
+		</init-param>
+		<init-param>
+			<param-name>forceEncoding</param-name>
+			<param-value>true</param-value>
+		</init-param>
+	</filter>
+	<!-- 路径映射 -->
+	<filter-mapping>
+		<filter-name>characterEncodingFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+</web-app>

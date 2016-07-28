@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--命名空间应该是对应接口的包名+接口名 -->
+<mapper namespace="com.zhangguo.ssmall.mapper.GoodsDAO">
+	<!--获得商品信息并分页 -->
+	<select id="getGoodsPager" resultType="Goods">
+		select
+		id,name,price,picture from goods limit #{skip},#{size}
+	</select>
+	<!-- 获得单个商品通过编号 -->
+	<select id="getGoodsById" parameterType="int" resultType="Goods">
+		select
+		id,name,price,picture from goods where id=#{id}
+	</select>
+	<!--获得商品总数 -->
+	<select id="getGoodsCount" resultType="int">
+		select count(*) from goods
+	</select>
+	<!--新增加商品 -->
+	<insert id="insert" parameterType="Goods">
+		insert into
+		goods(name,price,picture) values(#{name},#{price},#{picture});
+	</insert>
+	<!-- 删除商品 -->
+	<delete id="delete">
+		delete from goods where id=#{id}
+	</delete>
+	<!-- 修改商品 -->
+	<update id="update" parameterType="Goods">
+		update goods set
+		name=#{name},price=#{price},picture=#{picture} where id=#{id}
+	</update>
+</mapper>
